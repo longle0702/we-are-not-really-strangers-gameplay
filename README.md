@@ -1,6 +1,6 @@
 # How to Use
 
-Just run `play.py` and call it a day. Seriously. That’s it.
+Click the [link](https://we-are-not-really-strangers-gameplay-6mxyjurqkljxicmf55qmag.streamlit.app/).
 
 ## Final Note
 
