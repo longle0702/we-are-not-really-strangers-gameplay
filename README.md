@@ -1,6 +1,10 @@
 # How to Use
 
-Click the [link](https://we-are-not-really-strangers-gameplay-6mxyjurqkljxicmf55qmag.streamlit.app/).
+Click the [link](https://we-are-not-really-strangers-gameplay-6mxyjurqkljxicmf55qmag.streamlit.app/) right here buddy.
+
+Seriously. Click it.
+
+Don’t make it weird.
 
 ## Final Note
 
