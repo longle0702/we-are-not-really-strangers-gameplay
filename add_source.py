@@ -1,11 +1,16 @@
 import pandas as pd
-lv1 = pd.read_csv('1.csv')
+
 wildcard = pd.read_csv('wildcard.csv')
-lv2 = pd.read_csv('2.csv')
-lv3 = pd.read_csv('3.csv')
-lv1['Source'] = 'Level 1'
-lv2['Source'] = 'Level 2'
-lv3['Source'] = 'Level 3'
 wildcard['Source'] = 'Wildcard'
-lvwc = pd.concat([lv1, lv2, lv3, wildcard], ignore_index=True)
-lvwc.to_csv('Full.csv', index=False)
+levels = {
+    '1.csv': 'Level 1',
+    '2.csv': 'Level 2',
+    '3.csv': 'Level 3'
+}
+
+for filename, label in levels.items():
+    level_df = pd.read_csv(filename)
+    level_df['Source'] = label
+    combined = pd.concat([level_df, wildcard], ignore_index=True)
+    output_filename = filename.replace('.csv', 'wc.csv')
+    combined.to_csv(output_filename, index=False)
