@@ -1,6 +1,6 @@
 # How to Use
 
-Click the [link](https://we-are-not-really-strangers-gameplay-6mxyjurqkljxicmf55qmag.streamlit.app/) right here buddy.
+Click the [link](https://we-are-not-really-strangers-gameplay-longle0702.streamlit.app/) right here buddy.
 
 Seriously. Click it.
 
