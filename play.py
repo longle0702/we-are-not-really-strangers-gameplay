@@ -40,12 +40,12 @@ def load_questions(file):
     return pd.read_csv(file)
 
 df = load_questions(level_options[selected_level])
-col1, col2, col3 = st.columns([1, 2, 1])
-with col2:
-    if st.button("💥 Reveal Question"):
-        sample = df.sample(n=1)
-        for _, row in sample.iterrows():
-            st.markdown("---")
-            st.markdown(f"<div style='font-size: 24px; color: #00f5d4; font-weight: bold;'>{row['Source']}</div>", unsafe_allow_html=True)
-            st.markdown(f"<div style='font-size: 30px; color: white; font-weight: bold;'>❝ {row['Questions']} ❞</div>", unsafe_allow_html=True)
-            st.markdown("---")
+# col1, col2, col3 = st.columns([1, 2, 1])
+# with col2:
+if st.button("💥 Reveal Question"):
+    sample = df.sample(n=1)
+    for _, row in sample.iterrows():
+        st.markdown("---")
+        st.markdown(f"<div style='font-size: 24px; color: #00f5d4; font-weight: bold;'>{row['Source']}</div>", unsafe_allow_html=True)
+        st.markdown(f"<div style='font-size: 30px; color: white; font-weight: bold;'>❝ {row['Questions']} ❞</div>", unsafe_allow_html=True)
+        st.markdown("---")
