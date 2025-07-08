@@ -27,5 +27,5 @@ with col2:
         for _, row in sample.iterrows():
             st.markdown("---")
             st.markdown(f"<div style='font-size: 24px; color: #00f5d4; font-weight: bold;'>{row['Source']}</div>", unsafe_allow_html=True)
-            st.markdown(f"<div style='font-size: 30px; color: #ffd166; font-weight: bold;'>❝ {row['Questions']} ❞</div>", unsafe_allow_html=True)
+            st.markdown(f"<div style='font-size: 30px; color: white; font-weight: bold;'>❝ {row['Questions']} ❞</div>", unsafe_allow_html=True)
             st.markdown("---")
