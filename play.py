@@ -10,7 +10,7 @@ level_options = {
     "Level 1 💬 (Surface)": "1wc.csv",
     "Level 2 💭 (Personal)": "2wc.csv",
     "Level 3 ❤️ (Deep)": "3wc.csv",
-    "Wildcard 🎴 (All Cards)": "Full.csv"
+    "All levels 🎴 (All Cards)": "Full.csv"
 }
 
 selected_level = st.selectbox("Choose your level:", list(level_options.keys()))
