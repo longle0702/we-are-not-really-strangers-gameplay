@@ -1,6 +1,6 @@
 import pandas as pd
 import streamlit as st
-lvwc = pd.read_csv('lvwc.csv')
+lvwc = pd.read_csv('Full.csv')
 st.title("🎲 We Are Not Really Strangers")
 if st.button("Get a Random Question"):
     sample = lvwc.sample(n=1)
