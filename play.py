@@ -54,31 +54,42 @@ def load_questions(file_path):
 
 df = load_questions(level_options[selected_level])
 
-if "show_wow" not in st.session_state:
-    st.session_state.show_wow = False
+if "trigger_wow" not in st.session_state:
+    st.session_state.trigger_wow = False
+if "last_question" not in st.session_state:
+    st.session_state.last_question = None
 
 if st.button("💥 Reveal Question"):
-    st.session_state.show_wow = True
-    sample = df.sample(n=1).iloc[0]
-    
+    st.session_state.trigger_wow = True
+    st.session_state.last_question = df.sample(n=1).iloc[0]
+
+if st.session_state.last_question is not None:
+    q = st.session_state.last_question
     st.markdown("---")
-    st.markdown(f"<div style='font-size: 24px; color: #00f5d4; font-weight: bold;'>{sample['Source']}</div>", unsafe_allow_html=True)
-    st.markdown(f"<div style='font-size: 30px; color: white; font-weight: bold;'>❝ {sample['Questions']} ❞</div>", unsafe_allow_html=True)
+    st.markdown(f"<div style='font-size: 24px; color: #00f5d4; font-weight: bold;'>{q['Source']}</div>", unsafe_allow_html=True)
+    st.markdown(f"<div style='font-size: 30px; color: white; font-weight: bold;'>❝ {q['Questions']} ❞</div>", unsafe_allow_html=True)
     st.markdown("---")
 
 def get_base64_of_image(image_path):
     with open(image_path, "rb") as img_file:
-        data = img_file.read()
-    return base64.b64encode(data).decode()
+        return base64.b64encode(img_file.read()).decode()
 
-if st.session_state.show_wow:
-    image_base64 = get_base64_of_image("wow.png")
+if st.session_state.trigger_wow:
+    img_base64 = get_base64_of_image("wow.png")
     st.markdown(
         f"""
         <div id="wow-container">
-            <img src="data:image/png;base64,{image_base64}" width="200">
+            <img src="data:image/png;base64,{img_base64}" width="200">
         </div>
+        <script>
+            setTimeout(() => {{
+                const el = document.getElementById("wow-container");
+                if (el) {{
+                    el.remove();
+                }}
+            }}, 5000);
+        </script>
         """,
         unsafe_allow_html=True
     )
-    st.session_state.show_wow = False
+    st.session_state.trigger_wow = False
