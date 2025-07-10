@@ -1,8 +1,9 @@
 import pandas as pd
 import streamlit as st
+import time
 
-st.markdown(
-    """
+st.set_page_config(page_title="We Are Not Really Strangers", page_icon="💬", layout="centered")
+st.markdown("""
     <style>
     body {
         background-color: black;
@@ -16,12 +17,15 @@ st.markdown(
         background-color: black !important;
         color: white !important;
     }
+    #wow-container {
+        position: fixed;
+        top: 10%;
+        right: 5%;
+        z-index: 9999;
+    }
     </style>
-    """,
-    unsafe_allow_html=True
-)
+""", unsafe_allow_html=True)
 
-st.set_page_config(page_title="We Are Not Really Strangers", page_icon="💬", layout="centered")
 st.markdown("<h1 style='text-align: center; color: #e63946;'>🎲 We Are Not Really Strangers</h1>", unsafe_allow_html=True)
 st.markdown("<p style='text-align: center; font-size: 18px;'>Pick your level, then click to reveal a random question.</p>", unsafe_allow_html=True)
 st.markdown("###")
@@ -40,12 +44,34 @@ def load_questions(file):
     return pd.read_csv(file)
 
 df = load_questions(level_options[selected_level])
-# col1, col2, col3 = st.columns([1, 2, 1])
-# with col2:
+
+if "show_wow" not in st.session_state:
+    st.session_state.show_wow = False
+
 if st.button("💥 Reveal Question"):
+    st.session_state.show_wow = True 
     sample = df.sample(n=1)
     for _, row in sample.iterrows():
         st.markdown("---")
         st.markdown(f"<div style='font-size: 24px; color: #00f5d4; font-weight: bold;'>{row['Source']}</div>", unsafe_allow_html=True)
         st.markdown(f"<div style='font-size: 30px; color: white; font-weight: bold;'>❝ {row['Questions']} ❞</div>", unsafe_allow_html=True)
         st.markdown("---")
+
+if st.session_state.show_wow:
+    st.markdown(
+        f"""
+        <div id="wow-container">
+            <img src="wow.png" width="200">
+        </div>
+        <script>
+            setTimeout(() => {{
+                const el = document.getElementById("wow-container");
+                if (el) {{
+                    el.remove();
+                }}
+            }}, 5000);
+        </script>
+        """,
+        unsafe_allow_html=True
+    )
+    st.session_state.show_wow = False
