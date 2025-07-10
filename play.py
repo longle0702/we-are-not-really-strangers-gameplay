@@ -4,22 +4,19 @@ import streamlit as st
 st.markdown(
     """
     <style>
-    body {
-        background-color: black;
-        color: white;
-    }
     .stApp {
-        background-color: black;
+        background: linear-gradient(to bottom right, #1e1e1e, #121212);
         color: white;
     }
-    .css-18e3th9, .css-1d391kg, .css-1cpxqw2, .css-1v0mbdj {
-        background-color: black !important;
-        color: white !important;
+    html, body, [class*="css"]  {
+        color: white;
+        background-color: transparent;
     }
     </style>
     """,
     unsafe_allow_html=True
 )
+
 
 st.set_page_config(page_title="We Are Not Really Strangers", page_icon="💬", layout="centered")
 st.markdown("<h1 style='text-align: center; color: #e63946;'>🎲 We Are Not Really Strangers</h1>", unsafe_allow_html=True)
