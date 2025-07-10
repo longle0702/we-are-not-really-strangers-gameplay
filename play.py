@@ -1,6 +1,7 @@
 import pandas as pd
 import streamlit as st
 import base64
+import time
 
 st.set_page_config(
     page_title="We Are Not Really Strangers", 
@@ -54,11 +55,13 @@ def load_questions(file_path):
 
 df = load_questions(level_options[selected_level])
 
-if "show_wow" not in st.session_state:
-    st.session_state.show_wow = False
+if "wow_clicks" not in st.session_state:
+    st.session_state.wow_clicks = 0
 
-if st.button("💥 Reveal Question"):
-    st.session_state.show_wow = True
+clicked = st.button("💥 Reveal Question", key=f"btn_{st.session_state.wow_clicks}")
+
+if clicked:
+    st.session_state.wow_clicks += 1
     sample = df.sample(n=1).iloc[0]
     
     st.markdown("---")
@@ -66,19 +69,24 @@ if st.button("💥 Reveal Question"):
     st.markdown(f"<div style='font-size: 30px; color: white; font-weight: bold;'>❝ {sample['Questions']} ❞</div>", unsafe_allow_html=True)
     st.markdown("---")
 
-def get_base64_of_image(image_path):
-    with open(image_path, "rb") as img_file:
-        data = img_file.read()
-    return base64.b64encode(data).decode()
+    def get_base64_of_image(image_path):
+        with open(image_path, "rb") as img_file:
+            return base64.b64encode(img_file.read()).decode()
 
-if st.session_state.show_wow:
     image_base64 = get_base64_of_image("wow.png")
     st.markdown(
         f"""
         <div id="wow-container">
             <img src="data:image/png;base64,{image_base64}" width="200">
         </div>
+        <script>
+            setTimeout(() => {{
+                const el = document.getElementById("wow-container");
+                if (el) {{
+                    el.remove();
+                }}
+            }}, 5000);
+        </script>
         """,
         unsafe_allow_html=True
     )
-    st.session_state.show_wow = False
