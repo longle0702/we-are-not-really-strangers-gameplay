@@ -1,8 +1,8 @@
 import pandas as pd
-lv1 = pd.read_csv('1.csv')
-lv2 = pd.read_csv('2.csv')
-lv3 = pd.read_csv('3.csv')
-wildcard = pd.read_csv('wildcard.csv')
+lv1 = pd.read_csv('questions/1.csv')
+lv2 = pd.read_csv('questions/2.csv')
+lv3 = pd.read_csv('questions/3.csv')
+wildcard = pd.read_csv('questions/wildcard.csv')
 
 dfs = [lv1, lv2, lv3, wildcard]
 filenames = ['1.csv', '2.csv', '3.csv', 'wildcard.csv']

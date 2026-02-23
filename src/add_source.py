@@ -1,11 +1,11 @@
 import pandas as pd
 
-wildcard = pd.read_csv('wildcard.csv')
+wildcard = pd.read_csv('questions/wildcard.csv')
 wildcard['Source'] = 'Wildcard'
 levels = {
-    '1.csv': 'Level 1',
-    '2.csv': 'Level 2',
-    '3.csv': 'Level 3'
+    'questions/1.csv': 'Level 1',
+    'questions/2.csv': 'Level 2',
+    'questions/3.csv': 'Level 3'
 }
 
 for filename, label in levels.items():
