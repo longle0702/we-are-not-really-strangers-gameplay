@@ -24,10 +24,10 @@ st.markdown("<p style='text-align: center; font-size: 18px;'>Pick your level, th
 st.markdown("###")
 
 level_options = {
-    "Level 1 💬 (Surface)": "1wc.csv",
-    "Level 2 💭 (Personal)": "2wc.csv",
-    "Level 3 ❤️ (Deep)": "3wc.csv",
-    "All levels 🎴 (All Cards)": "Full.csv"
+    "Level 1 💬 (Surface)": "questions/1wc.csv",
+    "Level 2 💭 (Personal)": "questions/2wc.csv",
+    "Level 3 ❤️ (Deep)": "questions/3wc.csv",
+    "All levels 🎴 (All Cards)": "questions/Full.csv"
 }
 
 selected_level = st.selectbox("Choose your level:", list(level_options.keys()))
